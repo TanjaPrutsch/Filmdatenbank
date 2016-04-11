@@ -8,6 +8,7 @@ package BL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
@@ -40,9 +41,9 @@ public class Movie {
     @XmlAttribute
     private double imdbRating; 
 
-    public Movie(String title, LocalDate year, String type, String poster, LocalTime runtime, String director, String plot, double imdbRating) {
+    public Movie(String title, String year, String type, String poster, LocalTime runtime, String director, String plot, double imdbRating) {
         this.title = title;
-        this.year = year;
+        this.year = LocalDate.parse(year, DateTimeFormatter.ofPattern("dd MMM yyyy"));
         this.type = type;
         this.poster = poster;
         this.runtime = runtime;

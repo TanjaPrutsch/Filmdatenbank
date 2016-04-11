@@ -26,7 +26,7 @@ public class Series extends Movie
     @XmlAttribute 
     private int episode; 
 
-    public Series(String title, LocalDate year, String type, String poster, LocalTime runtime, String director, String story, double imdbRating, int season,
+    public Series(String title, String year, String type, String poster, LocalTime runtime, String director, String story, double imdbRating, int season,
     int episode) {
         super(title, year, type, poster, runtime, director, story, imdbRating);
         this.season = season; 
