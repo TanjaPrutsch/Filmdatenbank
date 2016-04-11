@@ -4,6 +4,8 @@
     Author     : Dino Patarcec
 --%>
 
+<%@page import="BL.Movie"%>
+<%@page import="javax.xml.bind.JAXB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +15,9 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        <%
+            Movie m = JAXB.unmarshal("http://www.omdbapi.com/?t=casino+royale&y=&plot=short&r=xml", Movie.class);
+            out.println("<p>"+m.getTitle()+"</p>");
+        %>
     </body>
 </html>
