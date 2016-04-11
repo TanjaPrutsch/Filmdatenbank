@@ -27,13 +27,13 @@ public class Movie {
     @XmlAttribute
     private String title;
     @XmlAttribute
-    private LocalDate year;
+    private String year;
     @XmlAttribute
     private String type;
     @XmlAttribute
     private String poster; 
     @XmlAttribute
-    private LocalTime runtime;
+    private String runtime;
     @XmlAttribute
     private String director; 
     @XmlAttribute
@@ -41,9 +41,9 @@ public class Movie {
     @XmlAttribute
     private double imdbRating; 
 
-    public Movie(String title, String year, String type, String poster, LocalTime runtime, String director, String plot, double imdbRating) {
+    public Movie(String title, String year, String type, String poster, String runtime, String director, String plot, double imdbRating) {
         this.title = title;
-        this.year = LocalDate.parse(year, DateTimeFormatter.ofPattern("dd MMM yyyy"));
+        this.year = year;
         this.type = type;
         this.poster = poster;
         this.runtime = runtime;
@@ -60,11 +60,11 @@ public class Movie {
         this.title = title;
     }
 
-    public LocalDate getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(LocalDate year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -84,11 +84,11 @@ public class Movie {
         this.poster = poster;
     }
 
-    public LocalTime getRuntime() {
+    public String getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(LocalTime runtime) {
+    public void setRuntime(String runtime) {
         this.runtime = runtime;
     }
 
