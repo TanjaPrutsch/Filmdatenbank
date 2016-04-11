@@ -11,6 +11,7 @@ import java.time.LocalTime;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlType;
 
 
 
@@ -19,7 +20,7 @@ import javax.xml.bind.annotation.XmlAttribute;
  * @author pruta_000
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-
+@XmlType(propOrder = {"title","year", "type", "poster", "runtime", "director", "plot", "imdbRating"})
 
 public class Movie {
     @XmlAttribute
@@ -31,22 +32,22 @@ public class Movie {
     @XmlAttribute
     private String poster; 
     @XmlAttribute
-    private LocalTime untime;
+    private LocalTime runtime;
     @XmlAttribute
     private String director; 
     @XmlAttribute
-    private String story;
+    private String plot;
     @XmlAttribute
     private double imdbRating; 
 
-    public Movie(String title, LocalDate year, String type, String poster, LocalTime untime, String director, String story, double imdbRating) {
+    public Movie(String title, LocalDate year, String type, String poster, LocalTime runtime, String director, String plot, double imdbRating) {
         this.title = title;
         this.year = year;
         this.type = type;
         this.poster = poster;
-        this.untime = untime;
+        this.runtime = runtime;
         this.director = director;
-        this.story = story;
+        this.plot = plot;
         this.imdbRating = imdbRating;
     }
 
@@ -82,12 +83,12 @@ public class Movie {
         this.poster = poster;
     }
 
-    public LocalTime getUntime() {
-        return untime;
+    public LocalTime getRuntime() {
+        return runtime;
     }
 
-    public void setUntime(LocalTime untime) {
-        this.untime = untime;
+    public void setRuntime(LocalTime runtime) {
+        this.runtime = runtime;
     }
 
     public String getDirector() {
@@ -98,12 +99,12 @@ public class Movie {
         this.director = director;
     }
 
-    public String getStory() {
-        return story;
+    public String getPlot() {
+        return plot;
     }
 
-    public void setStory(String story) {
-        this.story = story;
+    public void setPlot(String plot) {
+        this.plot = plot;
     }
 
     public double getImdbRating() {
