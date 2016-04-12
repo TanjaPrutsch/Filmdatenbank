@@ -24,17 +24,9 @@ public class testclass
     public static void main(String[] args) throws MalformedURLException
     {
 
-//        try
-//        {
-//            JAXBContext jaxbContext = JAXBContext.newInstance(Movie.class);
-//            Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
-//            Movie m = (Movie) jaxbUnmarshaller.unmarshal(new URL("http://www.omdbapi.com/?t=casino+royale&y=&plot=short&r=xml"));
-//            System.out.println(m.getTitle());
+
         Root r = JAXB.unmarshal("http://www.omdbapi.com/?t=casino+royale&y=&plot=short&r=xml", Root.class);
         System.out.println(r.getMovie().getTitle());
-//        } catch (JAXBException ex)
-//        {
-//            Logger.getLogger(testclass.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+
     }
 }
