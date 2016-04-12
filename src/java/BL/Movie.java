@@ -24,13 +24,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"title","year", "type", "poster", "runtime", "director", "plot", "imdbRating"})
+@XmlType(propOrder = {"title","released", "type", "poster", "runtime", "director", "plot", "imdbRating"})
 
 public class Movie {
     @XmlAttribute
     private String title;
     @XmlAttribute
-    private String year;
+    private String released;
     @XmlAttribute
     private String type;
     @XmlAttribute
@@ -44,9 +44,9 @@ public class Movie {
     @XmlAttribute
     private double imdbRating; 
 
-    public Movie(String title, String year, String type, String poster, String runtime, String director, String plot, double imdbRating) {
+    public Movie(String title, String released, String type, String poster, String runtime, String director, String plot, double imdbRating) {
         this.title = title;
-        this.year = year;
+        this.released = released;
         this.type = type;
         this.poster = poster;
         this.runtime = runtime;
@@ -62,7 +62,7 @@ public class Movie {
     public int hashCode() {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.title);
-        hash = 89 * hash + Objects.hashCode(this.year);
+        hash = 89 * hash + Objects.hashCode(this.released);
         hash = 89 * hash + Objects.hashCode(this.type);
         hash = 89 * hash + Objects.hashCode(this.poster);
         hash = 89 * hash + Objects.hashCode(this.runtime);
@@ -84,7 +84,7 @@ public class Movie {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.year, other.year)) {
+        if (!Objects.equals(this.released, other.released)) {
             return false;
         }
         if (!Objects.equals(this.type, other.type)) {
@@ -118,12 +118,12 @@ public class Movie {
         this.title = title;
     }
 
-    public String getYear() {
-        return year;
+    public String getRelease() {
+        return released;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setRelease(String released) {
+        this.released = released;
     }
 
     public String getType() {

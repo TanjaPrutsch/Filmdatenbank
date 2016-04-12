@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"title","year", "type", "poster", "runtime", "director", "plot", "imdbRating", "season" , "episode"})
+@XmlType(propOrder = {"title","release", "type", "poster", "runtime", "director", "plot", "imdbRating", "season" , "episode"})
 public class Series extends Movie
 {
     @XmlAttribute
@@ -27,9 +27,9 @@ public class Series extends Movie
     @XmlAttribute 
     private int episode; 
 
-    public Series(String title, String year, String type, String poster, String runtime, String director, String story, double imdbRating, int season,
+    public Series(String title, String release, String type, String poster, String runtime, String director, String story, double imdbRating, int season,
     int episode) {
-        super(title, year, type, poster, runtime, director, story, imdbRating);
+        super(title, release, type, poster, runtime, director, story, imdbRating);
         this.season = season; 
         this.episode = episode; 
         
