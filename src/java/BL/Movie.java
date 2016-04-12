@@ -5,28 +5,29 @@
  */
 package BL;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
-
-
 
 /**
  *
  * @author pruta_000
  */
-@XmlRootElement
+//@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"title","released", "type", "poster", "runtime", "director", "plot", "imdbRating"})
+@XmlType(propOrder =
+{
+    "title", "released", "type", "poster", "runtime", "director", "plot", "imdbRating"
+})
 
-public class Movie {
+
+public class Movie
+{
+
     @XmlAttribute
     private String title;
     @XmlAttribute
@@ -34,17 +35,18 @@ public class Movie {
     @XmlAttribute
     private String type;
     @XmlAttribute
-    private String poster; 
+    private String poster;
     @XmlAttribute
     private String runtime;
     @XmlAttribute
-    private String director; 
+    private String director;
     @XmlAttribute
     private String plot;
     @XmlAttribute
-    private double imdbRating; 
+    private double imdbRating;
 
-    public Movie(String title, String released, String type, String poster, String runtime, String director, String plot, double imdbRating) {
+    public Movie(String title, String released, String type, String poster, String runtime, String director, String plot, double imdbRating)
+    {
         this.title = title;
         this.released = released;
         this.type = type;
@@ -55,11 +57,13 @@ public class Movie {
         this.imdbRating = imdbRating;
     }
 
-    public Movie() {
+    public Movie()
+    {
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.title);
         hash = 89 * hash + Objects.hashCode(this.released);
@@ -73,109 +77,130 @@ public class Movie {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object obj)
+    {
+        if (obj == null)
+        {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
+        {
             return false;
         }
         final Movie other = (Movie) obj;
-        if (!Objects.equals(this.title, other.title)) {
+        if (!Objects.equals(this.title, other.title))
+        {
             return false;
         }
-        if (!Objects.equals(this.released, other.released)) {
+        if (!Objects.equals(this.released, other.released))
+        {
             return false;
         }
-        if (!Objects.equals(this.type, other.type)) {
+        if (!Objects.equals(this.type, other.type))
+        {
             return false;
         }
-        if (!Objects.equals(this.poster, other.poster)) {
+        if (!Objects.equals(this.poster, other.poster))
+        {
             return false;
         }
-        if (!Objects.equals(this.runtime, other.runtime)) {
+        if (!Objects.equals(this.runtime, other.runtime))
+        {
             return false;
         }
-        if (!Objects.equals(this.director, other.director)) {
+        if (!Objects.equals(this.director, other.director))
+        {
             return false;
         }
-        if (!Objects.equals(this.plot, other.plot)) {
+        if (!Objects.equals(this.plot, other.plot))
+        {
             return false;
         }
-        if (Double.doubleToLongBits(this.imdbRating) != Double.doubleToLongBits(other.imdbRating)) {
+        if (Double.doubleToLongBits(this.imdbRating) != Double.doubleToLongBits(other.imdbRating))
+        {
             return false;
         }
         return true;
     }
-    
-    
-
-    public String getTitle() {
+ 
+    public String getTitle()
+    {
         return title;
     }
-
-    public void setTitle(String title) {
+    
+    public void setTitle(String title)
+    {
         this.title = title;
     }
 
-    public String getRelease() {
+    public String getRelease()
+    {
         return released;
     }
 
-    public void setRelease(String released) {
+    public void setRelease(String released)
+    {
         this.released = released;
     }
 
-    public String getType() {
+    public String getType()
+    {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type)
+    {
         this.type = type;
     }
 
-    public String getPoster() {
+    public String getPoster()
+    {
         return poster;
     }
 
-    public void setPoster(String poster) {
+    public void setPoster(String poster)
+    {
         this.poster = poster;
     }
 
-    public String getRuntime() {
+    public String getRuntime()
+    {
         return runtime;
     }
 
-    public void setRuntime(String runtime) {
+    public void setRuntime(String runtime)
+    {
         this.runtime = runtime;
     }
 
-    public String getDirector() {
+    public String getDirector()
+    {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(String director)
+    {
         this.director = director;
     }
 
-    public String getPlot() {
+    public String getPlot()
+    {
         return plot;
     }
 
-    public void setPlot(String plot) {
+    public void setPlot(String plot)
+    {
         this.plot = plot;
     }
 
-    public double getImdbRating() {
+    public double getImdbRating()
+    {
         return imdbRating;
     }
 
-    public void setImdbRating(double imdbRating) {
+    public void setImdbRating(double imdbRating)
+    {
         this.imdbRating = imdbRating;
     }
-    
-    
-    
-    
-    
+
 }
