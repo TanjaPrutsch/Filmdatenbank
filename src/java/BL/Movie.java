@@ -9,9 +9,11 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -20,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *
  * @author pruta_000
  */
+@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"title","year", "type", "poster", "runtime", "director", "plot", "imdbRating"})
 
@@ -51,6 +54,61 @@ public class Movie {
         this.plot = plot;
         this.imdbRating = imdbRating;
     }
+
+    public Movie() {
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.title);
+        hash = 89 * hash + Objects.hashCode(this.year);
+        hash = 89 * hash + Objects.hashCode(this.type);
+        hash = 89 * hash + Objects.hashCode(this.poster);
+        hash = 89 * hash + Objects.hashCode(this.runtime);
+        hash = 89 * hash + Objects.hashCode(this.director);
+        hash = 89 * hash + Objects.hashCode(this.plot);
+        hash = 89 * hash + (int) (Double.doubleToLongBits(this.imdbRating) ^ (Double.doubleToLongBits(this.imdbRating) >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Movie other = (Movie) obj;
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.year, other.year)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (!Objects.equals(this.poster, other.poster)) {
+            return false;
+        }
+        if (!Objects.equals(this.runtime, other.runtime)) {
+            return false;
+        }
+        if (!Objects.equals(this.director, other.director)) {
+            return false;
+        }
+        if (!Objects.equals(this.plot, other.plot)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.imdbRating) != Double.doubleToLongBits(other.imdbRating)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 
     public String getTitle() {
         return title;
