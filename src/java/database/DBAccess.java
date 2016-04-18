@@ -5,10 +5,12 @@
  */
 package database;
 
+import BL.Movie;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 /**
@@ -22,6 +24,9 @@ public class DBAccess
     private DBConnectionPool dbp = null;
     private static DBAccess theInstance = null;
     private Connection con;
+    private PreparedStatement insertMovieStmt = null;
+    private static final String insertMovieStr = "INSERT INTO movieList(title, released, type, poster, runtime, director, plot, imdbRating) \n" +
+                                                "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
     private final HashMap<Connection, PreparedStatement> map = new HashMap<>();
 
@@ -34,14 +39,38 @@ public class DBAccess
         return theInstance;
     }
 
-    //Prepared-Statements
     private DBAccess() throws IOException, ClassNotFoundException, SQLException, Exception
     {
         this.dbp = DBConnectionPool.getInstance();
 
     }
-    //private PreparedStatement insertBookStmt = null;
-  
+
+    
+    
+    public void insertMovie(Movie m) throws SQLException
+    {
+        //title, released, type, poster, runtime, director, plot, imdbRating
+        String title = m.getTitle();
+        String released = m.getRelease();
+        String type = m.getType();
+        String runtime = m.getRuntime();
+        String plot = m.getPlot(); 
+        String imdbRating = m.getImdbRating() + ""; 
+
+
+        if (insertMovieStmt == null) {
+            insertMovieStmt = con.prepareStatement(insertMovieStr);
+        }
+        insertMovieStmt.setString(1, title);
+        insertMovieStmt.setString(2, released);
+        insertMovieStmt.setString(3, type);
+        insertMovieStmt.setString(4, runtime);
+        insertMovieStmt.setString(5, plot);
+        insertMovieStmt.setString(6, imdbRating);
+        insertMovieStmt.executeUpdate();
+    }
+    
+    
    
 
 }

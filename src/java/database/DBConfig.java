@@ -11,7 +11,7 @@ package database;
  */
 public interface DBConfig
 {
-    public static final String DB_NAME ="moviedb";
+    public static final String DB_NAME ="movie";
     public static final String DB_USER ="postgres";
     public static final String DB_PASSWD ="postgres";
     public static final String DB_URL ="jdbc:postgresql://localhost/";
