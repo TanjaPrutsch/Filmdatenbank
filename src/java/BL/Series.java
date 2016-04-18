@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(propOrder = {"title","release", "type", "poster", "runtime", "director", "plot", "imdbRating", "season" , "episode"})
+
 public class Series extends Movie
 {
     @XmlAttribute
