@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,7 +29,7 @@ public class DBAccess
     private PreparedStatement insertMovieStmt = null;
     private static final String insertMovieStr = "INSERT INTO movieList(title, released, type, poster, runtime, director, plot, imdbRating) \n" +
                                                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
-
+   
     private final HashMap<Connection, PreparedStatement> map = new HashMap<>();
 
     public static DBAccess getInstance() throws IOException, ClassNotFoundException, SQLException, Exception
@@ -49,25 +51,41 @@ public class DBAccess
     
     public void insertMovie(Movie m) throws SQLException
     {
-        //title, released, type, poster, runtime, director, plot, imdbRating
-        String title = m.getTitle();
-        String released = m.getRelease();
-        String type = m.getType();
-        String runtime = m.getRuntime();
-        String plot = m.getPlot(); 
-        String imdbRating = m.getImdbRating() + ""; 
-
-
-        if (insertMovieStmt == null) {
-            insertMovieStmt = con.prepareStatement(insertMovieStr);
+        try
+        {
+            Connection conn = dbp.getConnection();
+            PreparedStatement insertMovieStmt = map.get(conn);
+            
+            if (insertMovieStmt == null)
+            {
+                insertMovieStmt = conn.prepareStatement(insertMovieStr);
+                map.put(con, insertMovieStmt);
+            }
+            String title = m.getTitle();
+            String released = m.getRelease();
+            String type = m.getType();
+            String runtime = m.getRuntime();
+            String plot = m.getPlot();
+            String imdbRating = m.getImdbRating() + "";
+            String poster = m.getPoster();
+            String director = m.getDirector();
+            
+            insertMovieStmt.setString(1, title);
+            insertMovieStmt.setString(2, released);
+            insertMovieStmt.setString(3, type);
+            insertMovieStmt.setString(4, poster);
+            insertMovieStmt.setString(5, runtime);
+            insertMovieStmt.setString(6, director);
+            insertMovieStmt.setString(7, plot);
+            insertMovieStmt.setString(8, imdbRating);
+            insertMovieStmt.executeUpdate();
+            
+            dbp.releaseConnection(conn);
+        } catch (Exception ex)
+        {
+            Logger.getLogger(DBAccess.class.getName()).log(Level.SEVERE, null, ex);
         }
-        insertMovieStmt.setString(1, title);
-        insertMovieStmt.setString(2, released);
-        insertMovieStmt.setString(3, type);
-        insertMovieStmt.setString(4, runtime);
-        insertMovieStmt.setString(5, plot);
-        insertMovieStmt.setString(6, imdbRating);
-        insertMovieStmt.executeUpdate();
+        
     }
     
     
