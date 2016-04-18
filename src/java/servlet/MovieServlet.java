@@ -5,13 +5,16 @@
  */
 package servlet;
 
+import BL.Root;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXB;
 
 /**
  *
@@ -39,16 +42,22 @@ public class MovieServlet extends HttpServlet
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter())
         {
+            response.setContentType("text/html;charset=UTF-8");
+            if (request.getParameter("movieName") != null)
+            {
+                String moviename = request.getParameter("movieName").replace(" ","+");
+                String url = "http://www.omdbapi.com/?t="+moviename+"&y=&plot=full&r=xml";
+                Root r = JAXB.unmarshal(url, Root.class);
+                request.setAttribute("movie", r);
+                RequestDispatcher r1 = request.getRequestDispatcher("/jsp/movieSelectedPage.jsp");
+                r1.forward(request, response);
+            } else
+            {
+                RequestDispatcher r1 = request.getRequestDispatcher("/jsp/startscreen.jsp");
+                r1.forward(request, response);
+            }
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MovieServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MovieServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+
         }
     }
 

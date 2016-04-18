@@ -4,6 +4,7 @@
     Author     : Dino Patarcec
 --%>
 
+<%@page import="BL.Root"%>
 <%@page import="BL.Movie"%>
 <%@page import="javax.xml.bind.JAXB"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,10 +15,12 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Dafuq - Filmdatenbank</h1>
         <%
-            Movie m = JAXB.unmarshal("http://www.omdbapi.com/?t=casino+royale&y=&plot=short&r=xml", Movie.class);
-            out.println("<p>"+m.getTitle()+"</p>");
+            Root r = JAXB.unmarshal("http://www.omdbapi.com/?t=Divergent&y=&plot=full&r=xml", Root.class);
+            out.println("<p>"+r.getMovie().getTitle()+"</p>");
+            out.println("<p>"+r.getMovie().getPlot()+"</p>");
+            out.println("<img src='"+r.getMovie().getPoster()+"' alt='Mountain View'>");
         %>
     </body>
 </html>
