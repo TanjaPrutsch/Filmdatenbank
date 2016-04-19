@@ -56,7 +56,7 @@ public class MovieServlet extends HttpServlet
                     String url = "http://www.omdbapi.com/?t=" + moviename + "&y=&plot=full&r=xml";
                     Root r = JAXB.unmarshal(url, Root.class);
                     request.setAttribute("movie", r);
-                    DBAccess.getInstance().insertMovie(r.getMovie());
+                    DBAccess.getInstance().alreadyInDatabase(r.getMovie());
                     
                     RequestDispatcher r1 = request.getRequestDispatcher("/jsp/movieSelectedPage.jsp");
                     r1.forward(request, response);
