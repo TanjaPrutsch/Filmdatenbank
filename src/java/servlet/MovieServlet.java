@@ -6,8 +6,12 @@
 package servlet;
 
 import BL.Root;
+import database.DBAccess;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,12 +49,25 @@ public class MovieServlet extends HttpServlet
             response.setContentType("text/html;charset=UTF-8");
             if (request.getParameter("movieName") != null)
             {
-                String moviename = request.getParameter("movieName").replace(" ","+");
-                String url = "http://www.omdbapi.com/?t="+moviename+"&y=&plot=full&r=xml";
-                Root r = JAXB.unmarshal(url, Root.class);
-                request.setAttribute("movie", r);
-                RequestDispatcher r1 = request.getRequestDispatcher("/jsp/movieSelectedPage.jsp");
-                r1.forward(request, response);
+
+                try
+                {
+                    String moviename = request.getParameter("movieName").replace(" ", "+");
+                    String url = "http://www.omdbapi.com/?t=" + moviename + "&y=&plot=full&r=xml";
+                    Root r = JAXB.unmarshal(url, Root.class);
+                    request.setAttribute("movie", r);
+                    DBAccess.getInstance().insertMovie(r.getMovie());
+                    
+                    RequestDispatcher r1 = request.getRequestDispatcher("/jsp/movieSelectedPage.jsp");
+                    r1.forward(request, response);
+                } catch (SQLException ex)
+                {
+                    Logger.getLogger(MovieServlet.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex)
+                {
+                    Logger.getLogger(MovieServlet.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             } else
             {
                 RequestDispatcher r1 = request.getRequestDispatcher("/jsp/startscreen.jsp");
