@@ -1,0 +1,139 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 10.05.2016, 08:39:24
+    Author     : Dino Patarcec
+*/
+
+.mainButton {
+    -moz-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+    -webkit-box-shadow:inset 0px 34px 0px -15px #b54b3a;
+    box-shadow:inset 0px 34px 0px -15px #b54b3a;
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a73f2d), color-stop(1, #b34332));
+    background:-moz-linear-gradient(top, #a73f2d 5%, #b34332 100%);
+    background:-webkit-linear-gradient(top, #a73f2d 5%, #b34332 100%);
+    background:-o-linear-gradient(top, #a73f2d 5%, #b34332 100%);
+    background:-ms-linear-gradient(top, #a73f2d 5%, #b34332 100%);
+    background:linear-gradient(to bottom, #a73f2d 5%, #b34332 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a73f2d', endColorstr='#b34332',GradientType=0);
+    background-color:#a73f2d;
+    border:1px solid #241d13;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:15px;
+    font-weight:bold;
+    padding:9px 23px;
+    text-decoration:none;
+    text-shadow:0px -1px 0px #7a2a1d;
+}
+.mainButton:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #b34332), color-stop(1, #a73f2d));
+    background:-moz-linear-gradient(top, #b34332 5%, #a73f2d 100%);
+    background:-webkit-linear-gradient(top, #b34332 5%, #a73f2d 100%);
+    background:-o-linear-gradient(top, #b34332 5%, #a73f2d 100%);
+    background:-ms-linear-gradient(top, #b34332 5%, #a73f2d 100%);
+    background:linear-gradient(to bottom, #b34332 5%, #a73f2d 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b34332', endColorstr='#a73f2d',GradientType=0);
+    background-color:#b34332;
+}
+.mainButton:active {
+    position:relative;
+    top:1px;
+}
+
+.headDiv{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    width:100%;
+    background-color: silver;
+    padding: 5px;
+}
+
+.headDiv form{
+    float:right;
+    padding:3px;
+}
+
+#movieSearch{
+    float: left;
+    margin-left: 10px;
+}
+
+#movieSearch input[type="text"]{
+    height: 30px;
+    width: 300px;
+}
+
+.container{
+    margin-top: 100px;
+}
+
+body{
+background: linear-gradient(to bottom,  silver 10%,#8f0222 70%,#6d0019 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+background-repeat: no-repeat;
+background-attachment: fixed;
+}
+
+/*----------------*/
+
+
+/* jssor slider bullet navigator skin 03 css */
+/*
+.jssorb03 div           (normal)
+.jssorb03 div:hover     (normal mouseover)
+.jssorb03 .av           (active)
+.jssorb03 .av:hover     (active mouseover)
+.jssorb03 .dn           (mousedown)
+*/
+.jssorb03 {
+    position: absolute;
+}
+.jssorb03 div, .jssorb03 div:hover, .jssorb03 .av {
+    position: absolute;
+    /* size of bullet elment */
+    width: 21px;
+    height: 21px;
+    text-align: center;
+    line-height: 21px;
+    color: white;
+    font-size: 12px;
+    background: url('img/b03.png') no-repeat;
+    overflow: hidden;
+    cursor: pointer;
+}
+.jssorb03 div { background-position: -5px -4px; }
+.jssorb03 div:hover, .jssorb03 .av:hover { background-position: -35px -4px; }
+.jssorb03 .av { background-position: -65px -4px; }
+.jssorb03 .dn, .jssorb03 .dn:hover { background-position: -95px -4px; }
+
+/* jssor slider arrow navigator skin 03 css */
+/*
+.jssora03l                  (normal)
+.jssora03r                  (normal)
+.jssora03l:hover            (normal mouseover)
+.jssora03r:hover            (normal mouseover)
+.jssora03l.jssora03ldn      (mousedown)
+.jssora03r.jssora03rdn      (mousedown)
+*/
+.jssora03l, .jssora03r {
+    display: block;
+    position: absolute;
+    /* size of arrow element */
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    background: url('img/a03.png') no-repeat;
+    overflow: hidden;
+}
+.jssora03l { background-position: -3px -33px; }
+.jssora03r { background-position: -63px -33px; }
+.jssora03l:hover { background-position: -123px -33px; }
+.jssora03r:hover { background-position: -183px -33px; }
+.jssora03l.jssora03ldn { background-position: -243px -33px; }
+.jssora03r.jssora03rdn { background-position: -303px -33px; }
