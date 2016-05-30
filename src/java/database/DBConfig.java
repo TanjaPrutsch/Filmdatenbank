@@ -6,8 +6,7 @@
 package database;
 
 /**
- *
- * @author Dino Patarcec
+ *This config file stores all the static parameters used to make a connection.
  */
 public interface DBConfig
 {

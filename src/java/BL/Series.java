@@ -14,15 +14,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
- *
- * @author pruta_000
+ * This class is a beans-class that describes a series.
  */
 //@XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(propOrder = {"title","release", "type", "poster", "runtime", "director", "plot", "imdbRating"})
-
-public class Series 
+@XmlType(propOrder =
 {
+    "title", "release", "type", "poster", "runtime", "director", "plot", "imdbRating"
+})
+
+public class Series
+{
+
     @XmlAttribute
     private String title;
     @XmlAttribute
@@ -40,10 +43,18 @@ public class Series
     @XmlAttribute
     private double imdbRating;
 
-
-   
-
-    public Series(String title, String released, String type, String poster, String runtime, String director, String plot, double imdbRating) {
+    /**
+     * @param  title String (Title of the series)
+     * @param  released String (Date of released series)
+     * @param  type String (type -> Series/Movie)
+     * @param  poster String (url of the poster)
+     * @param  runtime String (runtime of series in minutes)
+     * @param  director String (name of director)
+     * @param  plot String (plot of series)
+     * @param  imdbRating double (imdb Rating from m.imdb.com
+     */
+    public Series(String title, String released, String type, String poster, String runtime, String director, String plot, double imdbRating)
+    {
         this.title = title;
         this.released = released;
         this.type = type;
@@ -54,79 +65,88 @@ public class Series
         this.imdbRating = imdbRating;
     }
 
-    public Series() {
+    public Series()
+    {
     }
 
-    public String getTitle() {
+    public String getTitle()
+    {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(String title)
+    {
         this.title = title;
     }
 
-    public String getReleased() {
+    public String getReleased()
+    {
         return released;
     }
 
-    public void setReleased(String released) {
+    public void setReleased(String released)
+    {
         this.released = released;
     }
 
-    public String getType() {
+    public String getType()
+    {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(String type)
+    {
         this.type = type;
     }
 
-    public String getPoster() {
+    public String getPoster()
+    {
         return poster;
     }
 
-    public void setPoster(String poster) {
+    public void setPoster(String poster)
+    {
         this.poster = poster;
     }
 
-    public String getRuntime() {
+    public String getRuntime()
+    {
         return runtime;
     }
 
-    public void setRuntime(String runtime) {
+    public void setRuntime(String runtime)
+    {
         this.runtime = runtime;
     }
 
-    public String getDirector() {
+    public String getDirector()
+    {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(String director)
+    {
         this.director = director;
     }
 
-    public String getPlot() {
+    public String getPlot()
+    {
         return plot;
     }
 
-    public void setPlot(String plot) {
+    public void setPlot(String plot)
+    {
         this.plot = plot;
     }
 
-    public double getImdbRating() {
+    public double getImdbRating()
+    {
         return imdbRating;
     }
 
-    public void setImdbRating(double imdbRating) {
+    public void setImdbRating(double imdbRating)
+    {
         this.imdbRating = imdbRating;
     }
 
-    
 }
-
-   
-
-   
-    
-
-    

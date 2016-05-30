@@ -10,8 +10,7 @@ import java.sql.DriverManager;
 import java.util.LinkedList;
 
 /**
- *
- * @author Dino Patarcec
+ * This class creates connection pools that are necessary for a webservice.
  */
 public class DBConnectionPool implements DBConfig
 {
@@ -36,6 +35,9 @@ public class DBConnectionPool implements DBConfig
         Class.forName(DB_DRIVER);
     }
     
+/**
+ * @return Connection
+ */
     public Connection getConnection() throws Exception
     {
         if(connections.isEmpty())
@@ -52,7 +54,9 @@ public class DBConnectionPool implements DBConfig
         }
         return connections.poll();
     }
-
+/**
+ * releases connection
+ */
     public void releaseConnection(Connection connection)
     {
         connections.offer(connection); 

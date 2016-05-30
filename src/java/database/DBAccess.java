@@ -34,7 +34,9 @@ import javax.xml.bind.JAXB;
 public class DBAccess
 {
 
-    // class as singleton
+    /**
+     * This class is the acces class that manages the access to the database.
+     */
     private DBConnectionPool dbp = null;
     private static DBAccess theInstance = null;
     private Connection con;
@@ -70,6 +72,12 @@ public class DBAccess
 
     }
 
+    /**
+     * This method checks if a movie is already in the database, if not the
+     * method insertmovie() is opened
+     *
+     * @param Movie object Movie
+     */
     public void alreadyInDatabase(Movie m) throws Exception
     {
         try
@@ -208,6 +216,11 @@ public class DBAccess
         return s;
     }
 
+    /**
+     * This method inserts an object Movie in the database
+     *
+     * @param Movie Object Movie
+     */
     public void insertMovie(Movie m) throws SQLException
     {
 
@@ -250,6 +263,11 @@ public class DBAccess
 
     }
 
+    /**
+     * This method inserts an object Movie in the database
+     *
+     * @param Movie Object Series
+     */
     public void insertSeries(Movie s)
     {
         try
@@ -295,6 +313,10 @@ public class DBAccess
         }
     }
 
+    /**
+     * This method inserts User into the database. It also creates a hascode that makes it much more secure.
+     * @param User Object User
+     */
     public void insertUser(User u) throws NoSuchAlgorithmException, Exception
     {
 //        Connection conn = dbp.getConnection();
@@ -340,7 +362,12 @@ public class DBAccess
             System.out.println(ex.toString());
         }
     }
-    
+/**
+ * This method checks if the user is registered to the site and if the user is registered, the user gets logged in.
+ * @param passwordStr password 
+ * @param username username
+ * @return Returns true if User is registered and is able to login, else false.
+ */
     public boolean loginUser(String passwordStr, String username) throws NoSuchAlgorithmException, SQLException, Exception
     {
         Connection conn = dbp.getConnection();
@@ -348,22 +375,24 @@ public class DBAccess
         String password = createPasswordHash(passwordStr);
         String sqlString = "SELECT username, password "
                 + "FROM userlist "
-                + "WHERE username LIKE '" + username+ "' AND password LIKE '" + password+"'";
+                + "WHERE username LIKE '" + username + "' AND password LIKE '" + password + "'";
 
         ResultSet rs = stat.executeQuery(sqlString);
 
-
-        if (rs.next()) {
+        if (rs.next())
+        {
             User user = new User(password, username);
             userlist.add(user);
             return true;
-        }
-        else
+        } else
         {
             return false;
         }
     }
-
+/**
+ * This method creates a hash depending on the passwordstring.
+ * @param password password 
+ */
     public String createPasswordHash(String password) throws NoSuchAlgorithmException
     {
         MessageDigest md = MessageDigest.getInstance("MD5");
@@ -420,7 +449,10 @@ public class DBAccess
             e.printStackTrace();
         }
     }
-
+/**
+ * This method returns random movie pics.
+ * @return returns a list of random movie Pics.
+ */
     public LinkedList<Movie> getRandomMoviePics()
     {
         try
@@ -466,6 +498,10 @@ public class DBAccess
 
     }
 
+/**
+ * This method is just used for adding a list of movies
+ * @param movies list of all movies.
+ */    
     public void insertAllMovies(LinkedList<Movie> movies)
     {
         try

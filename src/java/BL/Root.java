@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Dino Patarcec
+ * This class is necessary for converting the requested XML to Move/Series class.
  */
 @XmlRootElement
 public class Root
@@ -33,10 +33,6 @@ public class Root
         this.movie = movie;
     }
 
-    
-
-   
-    
 
     @Override
     public int hashCode()

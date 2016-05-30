@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pruta_000
+ * This servlet is the controllerservlet for user that are logged in.
  */
 @WebServlet(name = "LoggedinServlet", urlPatterns = {"/LoggedinServlet"})
 public class LoggedinServlet extends HttpServlet {

@@ -6,6 +6,7 @@
 package servlet;
 
 import BL.Root;
+import BL.Series;
 import BL.User;
 import database.DBAccess;
 import java.io.IOException;
@@ -24,13 +25,14 @@ import javax.xml.bind.JAXB;
 
 /**
  *
- * @author Dino Patarcec
+ * This is the main controllerservlet that forwards to other servlets.
  */
 @WebServlet(name = "MovieServlet", urlPatterns
         =
         {
             "/MovieServlet"
         })
+
 public class MovieServlet extends HttpServlet
 {
 
@@ -51,7 +53,6 @@ public class MovieServlet extends HttpServlet
         {
             System.out.println("LOGININFOS: " + request.getParameter("LogInInfos"));
             System.out.println("LOGIN:" + request.getParameter("login"));
-
             response.setContentType("text/html;charset=UTF-8");
             if (request.getParameter("movieName") != null)
             {

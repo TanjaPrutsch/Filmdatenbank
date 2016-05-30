@@ -24,7 +24,6 @@ import javax.xml.bind.annotation.XmlType;
     "title", "released", "type", "poster", "runtime", "director", "plot", "imdbRating"
 })
 
-
 public class Movie
 {
 
@@ -45,6 +44,16 @@ public class Movie
     @XmlAttribute
     private double imdbRating;
 
+    /**
+     * @param title String (Title of the movie)
+     * @param released String (Date of released movie)
+     * @param type String (type -> Series/Movie)
+     * @param poster String (url of the poster)
+     * @param runtime String (runtime of movie in minutes)
+     * @param director String (name of director)
+     * @param plot String (plot of movie)
+     * @param imdbRating double (imdb Rating from m.imdb.com
+     */
     public Movie(String title, String released, String type, String poster, String runtime, String director, String plot, double imdbRating)
     {
         this.title = title;
@@ -122,12 +131,12 @@ public class Movie
         }
         return true;
     }
- 
+
     public String getTitle()
     {
         return title;
     }
-    
+
     public void setTitle(String title)
     {
         this.title = title;
