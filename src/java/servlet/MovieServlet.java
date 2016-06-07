@@ -112,7 +112,8 @@ public class MovieServlet extends HttpServlet
             } else
             {
                 RequestDispatcher r1 = request.getRequestDispatcher("/jsp/startscreen.jsp");
-                r1.forward(request, response);
+                response.sendRedirect("jsp/startscreen.jsp");
+//                r1.forward(request, response);
             }
             /* TODO output your page here. You may use following sample code. */
 

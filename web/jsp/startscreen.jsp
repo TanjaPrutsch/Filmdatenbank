@@ -4,11 +4,12 @@
     Author     : Dino Patarcec
 --%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@page import="BL.Movie"%>
 <%@page import="java.util.LinkedList"%>
 <%@page import="database.DBAccess"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 
 <%
     LinkedList<Movie> posters = DBAccess.getInstance().getRandomMoviePics();
